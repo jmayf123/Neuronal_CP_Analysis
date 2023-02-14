@@ -1,21 +1,23 @@
 tic
 %% file paths
 clear;
-paths = {
-% 'Z:\Alpha data\Neurobehavior\IC\ex110323\tank110323a\OurData-6'
-% 'Z:\Alpha data\Neurobehavior\IC\ex110322\tank110322a\OurData-8'
-'Z:\Alpha data\Neurobehavior\IC\ex110324\tank110324a\OurData-4'
-
-
-        };
+addpath('..\possibly_useful_code\')
+paths = readcell('..\..\data\tin_paths_list.csv')';
+for i = 1:numel(paths)
+    new_paths{i,1} = strrep(paths{i}, '/', '\');
+end
 %% import all of the above data into single cell variable 
 
 %Num_monkeys = 3; %Figure out how to make a 3-d cell array, third dimension is Number of monkeys (3)
 % Each row is new tank/block combo  
-neuron_data = cell(length(paths),1);
+neuron_data = cell(length(new_paths),1);
+h = waitbar(0, 'Processing...');
 
-parfor imp = 1:length(paths)
-    neuron_data{imp,1} = TDTbin2mat(paths{imp,1});
+for imp = 1:length(new_paths)
+    neuron_data{imp,1} = TDTbin2mat(new_paths{imp,1});
+
+        % Update the progress bar
+    waitbar(imp/length(new_paths), h);
 end
 
 %% Loop trough each of the duration values and Calc Grand_CP for all durations
