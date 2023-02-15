@@ -9,6 +9,14 @@ function [ChoiceProbabilities , Grand_ChoiceProbability, p, grandcpboot] = CP(a,
  %hold off
 [new_tlvlsC,new_tlvlsI] = Reshaped(a,b); %Finds data where there are >= 3 trials for each of Correct and Incorrect and reshapes data for use in ROC/CP
 
+if isempty(new_tlvlsC) || isempty(new_tlvlsI)
+    ChoiceProbabilities = 'NA';
+    Grand_ChoiceProbability = 'NA';
+    p = 'NA';
+    grandcpboot ='NA';
+    return
+end
+    
 cList = new_tlvlsC(1,:); %List of tone levels where there are >= 3 trials for each of Correct and Incorrect
 
 Correct = new_tlvlsC(2:end,:); %Takes away the first row which is the corresponding tone level, and leaves the spike data for Correct and Incorrect Trials

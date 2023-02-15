@@ -85,6 +85,8 @@ end
 if hist_trial_Col == 0
     
     disp('Correct and Incorrect Responses do not fall under the same tone levels. Remove tank from Analysis.')
+    new_tlvlsC = [];
+    new_tlvlsI = [];
     return
 end
 
