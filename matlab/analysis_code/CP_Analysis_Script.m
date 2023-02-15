@@ -13,7 +13,7 @@ end
 neuron_data = cell(length(new_paths),1);
 h = waitbar(0, 'Processing...');
 
-for imp = 1:length(new_paths)
+for imp = 1:50 %Limit to 50 becuase matlab runs out of memory
     neuron_data{imp,1} = TDTbin2mat(new_paths{imp,1});
 
         % Update the progress bar
@@ -21,6 +21,7 @@ for imp = 1:length(new_paths)
 end
 
 %% Loop trough each of the duration values and Calc Grand_CP for all durations
+neuron_data = neuron_data(1:50,:);
 dur = 0.0125:0.0125:0.2;
 
 CP = cell(length(neuron_data),length(dur));
