@@ -1,6 +1,6 @@
 % loop through the samsmodlong pooling fxn to get a count of how many times
 % threshold is met by the populations of neurons
-function [ChoiceProbs,Grand_CP,p_value,grandcpboot] = CP_Calc (data, dur)
+function [ChoiceProbs,Grand_CP,p_value,grandcpboot] = CP_Calc (data, dur, path_of_data)
 format long g; 
 
 
@@ -261,7 +261,7 @@ data = TDTfilter(data,'Levl','TIME',[0, 0.2]);
             %%%%%%%%%%%%%%%%%%%%%   Jackson Mayfield 08/30/21   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-            [ChoiceProbs,Grand_CP,p_value,grandcpboot] = CP(tlvlsCorrect,tlvlsIncorrect,tlvls);
+            [ChoiceProbs,Grand_CP,p_value,grandcpboot] = CP(tlvlsCorrect,tlvlsIncorrect,tlvls,path_of_data);
 
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

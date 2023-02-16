@@ -1,4 +1,4 @@
-function [new_tlvlsC,new_tlvlsI] = Reshaped(tlvlsCorrect,tlvlsIncorrect)
+function [new_tlvlsC,new_tlvlsI] = Reshaped(tlvlsCorrect,tlvlsIncorrect, path_of_data)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%   Creates Tone level Data with >=3 trials at the same tone level(s) %%%%%%%%%%%%%%%%%%%%%
 %%%%%%   Outputs the Reshaped Version of tlvlsCorrect & tlvlsIncorrect
@@ -83,8 +83,8 @@ for i = 1:length(new_tlvlsC(1,:))
    
 end
 if hist_trial_Col == 0
-    
-    disp('Correct and Incorrect Responses do not fall under the same tone levels. Remove tank from Analysis.')
+    formatspec = 'Correct and Incorrect Responses do not fall under the same tone levels. Remove tank from Analysis:\n%s';
+    fprintf(formatspec, path_of_data);
     new_tlvlsC = [];
     new_tlvlsI = [];
     return

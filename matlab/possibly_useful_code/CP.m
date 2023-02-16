@@ -5,9 +5,9 @@
 % OUTPUTS: choice probs, grand cps (via z-score), significance value
 %
 %
-function [ChoiceProbabilities , Grand_ChoiceProbability, p, grandcpboot] = CP(a,b,tlvls)
+function [ChoiceProbabilities , Grand_ChoiceProbability, p, grandcpboot] = CP(a,b,tlvls, path_of_data)
  %hold off
-[new_tlvlsC,new_tlvlsI] = Reshaped(a,b); %Finds data where there are >= 3 trials for each of Correct and Incorrect and reshapes data for use in ROC/CP
+[new_tlvlsC,new_tlvlsI] = Reshaped(a,b, path_of_data); %Finds data where there are >= 3 trials for each of Correct and Incorrect and reshapes data for use in ROC/CP
 
 if isempty(new_tlvlsC) || isempty(new_tlvlsI)
     ChoiceProbabilities = 'NA';
