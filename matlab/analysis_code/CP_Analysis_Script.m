@@ -3,9 +3,10 @@ tic
 clear;
 addpath('..\possibly_useful_code\')
 paths = readcell('..\..\data\tin_paths_list.csv')';
-for i = 1:50%Limit to 50 becuase matlab runs out of memory
+for i = 1:46%Limit to 50 becuase matlab runs out of memory
     new_paths{i,1} = strrep(paths{i}, '/', '\');
 end
+
 %% import all of the above data into single cell variable 
 
 %Num_monkeys = 3; %Figure out how to make a 3-d cell array, third dimension is Number of monkeys (3)
@@ -19,7 +20,7 @@ parfor imp = 1:length(new_paths) %Limit to 50 becuase matlab runs out of memory
 %         % Update the progress bar
 %     waitbar(imp/lim, h); 
 end
-neuron_data = neuron_data(1:50,:);
+
 dur = 0.0125:0.0125:0.2;
 
 %% Loop trough each of the duration values and Calc Grand_CP for all durations
