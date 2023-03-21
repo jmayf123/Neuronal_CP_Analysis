@@ -2,8 +2,8 @@ tic
 %% file paths
 clear;
 addpath('..\possibly_useful_code\')
-paths = readcell('..\..\data\tin_paths_list.csv')';
-for i = 1:46%Limit to 50 becuase matlab runs out of memory
+paths = readcell('..\..\data\timn_paths_list.csv')';
+for i = 1:50%Limit to 50 becuase matlab runs out of memory
     new_paths{i,1} = strrep(paths{i}, '/', '\');
 end
 
