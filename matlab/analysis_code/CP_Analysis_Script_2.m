@@ -2,7 +2,7 @@ tic
 %% file paths
 clear;
 addpath('..\possibly_useful_code\')
-paths = readcell('..\..\data\scatter_paths\paths_TIN_IC.csv')';
+paths = readcell('..\..\data\scatter_paths\paths_TIQ_CN.csv')';
 for i = 1:length(paths)
     new_paths{i,1} = strrep(paths{i}, '/', '\');
 end
@@ -12,14 +12,10 @@ end
 %Num_monkeys = 3; %Figure out how to make a 3-d cell array, third dimension is Number of monkeys (3)
 % Each row is new tank/block combo  
 neuron_data = cell(length(new_paths),1);
-h = waitbar(0, 'Processing...');
-lim = length(new_paths);
 
 parfor imp = 1:length(new_paths) 
     neuron_data{imp,1} = TDTbin2mat(new_paths{imp,1});
 
-    % Update the progress bar
-    waitbar(imp/lim, h); 
 end
 
 dur = 0.2; %Only extract the 200 ms tone duration
